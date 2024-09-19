@@ -1,19 +1,49 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+
+// 09/19/24 GTC
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
 public class Main {
     public static void main(String[] args) {
+        System.out.println("\n Hello and welcome to the Zoo Program!");
 
-        Dog alphaDog = new Dog();
-        Dog betaDog = new Dog();
+        // Open the arriving animals file.
+        try {
+            BufferedReader bufferedReader = new BufferedReader(new FileReader("C:\\Users\\BE218\\Downloads\\arrivingAnimals.txt"));
+            String myLine;
 
-        Dog myDog = new Dog("Koromaru", 18);
-        System.out.println("My dog's name is " + myDog.getName() + ". He is " + myDog.getAge() + " years old.");
+            // Read the file one line at a time.
+            while ((myLine = bufferedReader.readLine()) != null) {
+                System.out.println(myLine);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
-        Dog myDog2 = new Dog("Harp", 9);
-        System.out.println("My dog's name is " + myDog2.getName() + ". She is " + myDog2.getAge() + " years old.");
+        // Create an Animal object.
+        Animal animalOne = new Animal();
+        animalOne.setAge(4);
 
-        myDog2.setAge(myDog2.getAge() + 1);
-        System.out.println(" my dog" + myDog2.getName() + ", had a birthday and age is now: " + myDog2.getAge() );
+        // Use our new Animal object.
+        System.out.println("\n My animal's age is: " + animalOne.getAge() + " years old.");
 
+        // Create a Hyena object.
+        Hyena myNewHyena = new Hyena();
+        myNewHyena.setAge(7);
+
+        // Output the age of our new Hyena
+        System.out.println("\n The age of our Hyena is " + myNewHyena.getAge() + " years old.");
+
+        // Create a Lion object.
+        Lion myNewLion = new Lion();
+        myNewLion.setAge(12);
+
+        // Make the lion 12 years old.
+        System.out.println("\n The age of my lion is " + myNewLion.getAge() + " years old.");
+
+        // Output the number of animals.
+        System.out.println("\n The number of animals created is: " + Animal.numOfAnimals);
+        }
     }
-}
